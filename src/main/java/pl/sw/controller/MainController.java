@@ -18,11 +18,18 @@ public class MainController {
     private final long TIME_INTERVAL_IN_SECONDS = 5;
 
     public void initialize() {
-        getNewTime(); //test
+        timeToMoveLabel.setText("Click this field");
+        counterLauncher();
+    }
+
+    private void counterLauncher() {
+        timeToMoveLabel.setOnMouseClicked(event -> countAndMoveMouse());
+        timeWhenMouseWillMoveLabel.setOnMouseClicked(event -> countAndMoveMouse());
     }
 
     public void countAndMoveMouse() {
-        while(timeCounter()) moveMouse(); //mouse moved only when timeCounter() == True
+//        if(timeCounter()) moveMouse(); // test - will run only once
+        while(timeCounter()) moveMouse(); // mouse moved only when timeCounter() == True
     }
 
     private boolean timeCounter() {
@@ -31,11 +38,12 @@ public class MainController {
             long i = TIME_INTERVAL_IN_SECONDS;
             while(--i > 0) {
                 timeToMoveLabel.setText(timeToDisplay(LocalTime.ofSecondOfDay(i)));
-                Thread.sleep(1000);
+                Thread.sleep(1000); // Process finished with exit code -805306369 (0xCFFFFFFF) - Why?
             }
             return true;
         } catch (InterruptedException e) {
-            e.printStackTrace(); //temporarily ignored
+            //e.printStackTrace();
+            timeToMoveLabel.setText("Thread error");
             return false;
         }
     }
@@ -60,7 +68,8 @@ public class MainController {
             Robot robot = new Robot();
             robot.mouseMove(location.x + 1, location.y);
         } catch (AWTException e) {
-            e.printStackTrace(); //temporarily ignored
+            //e.printStackTrace();
+            timeToMoveLabel.setText("Robot error");
         }
     }
 }
