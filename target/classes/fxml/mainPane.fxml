@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="40.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.sw.main.Main">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.sw.controller.MainController">
    <children>
       <Label fx:id="timeWhenMouseWillMoveLabel" alignment="CENTER" prefHeight="25.0" prefWidth="64.0"
              textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">

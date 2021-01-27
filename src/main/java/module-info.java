@@ -5,5 +5,5 @@ module AutoMouseMover {
     requires java.desktop;
 
     exports pl.sw.main to javafx.graphics;
-    opens pl.sw.main to javafx.fxml, java.desktop;
+    opens pl.sw.controller to javafx.fxml, java.desktop;
 }
