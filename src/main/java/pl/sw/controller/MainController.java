@@ -28,17 +28,18 @@ public class MainController {
     }
 
     public void countAndMoveMouse() {
-//        if(timeCounter()) moveMouse(); // test - will run only once
         while(timeCounter()) moveMouse(); // mouse moved only when timeCounter() == True
     }
 
     private boolean timeCounter() {
         try {
-            getNewTime();
             long i = TIME_INTERVAL_IN_SECONDS;
-            while(--i > 0) {
+            getNewTime();
+            while(i > 0) {
                 timeToMoveLabel.setText(timeToDisplay(LocalTime.ofSecondOfDay(i)));
-                Thread.sleep(1000); // Process finished with exit code -805306369 (0xCFFFFFFF) - Why?
+//                System.out.println(timeWhenMouseWillMoveLabel.getText() + " | " + timeToMoveLabel.getText()); // test - uncomment to see timers in console
+                Thread.sleep(1000);
+                i--;
             }
             return true;
         } catch (InterruptedException e) {
